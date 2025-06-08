@@ -1,3 +1,5 @@
+import { TbHorseToy } from "react-icons/tb"
+
 export const fetchBlogs=async()=>{
     try {
         const res=await fetch('http://localhost:3001/blogs') 
@@ -26,3 +28,37 @@ export const retrieveBlog = async ({ blogSlug}) => {
         throw error; 
     }
 };
+
+export const login=async(body)=>{
+    try {
+        const res=await fetch('http://localhost:3001/login' , {
+            body: JSON.stringify(body),
+             method: "POST",headers: {
+                'Content-Type': 'application/json'
+            },}) 
+        const result=await res.json()
+        if(res.ok){
+            return result
+        }else{
+            throw new Error(result.message)
+        }
+        
+    } catch (error) {
+        throw new Error(error)
+    }
+}
+
+// export const LogOut=async()=>{
+//     try {
+//         const res=await fetch('http://localhost:3001/logout') 
+//         const result=await res.json()
+//         if(res.ok){
+//             return result
+//         }else{
+//             throw new Error(result.message)
+//         }
+        
+//     } catch (error) {
+//         console.log('error Fetching the blog',error.message)
+//     }
+// }
