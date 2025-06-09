@@ -1,4 +1,3 @@
-import { TbHorseToy } from "react-icons/tb"
 
 export const fetchBlogs=async()=>{
     try {
@@ -29,7 +28,7 @@ export const retrieveBlog = async ({ blogSlug}) => {
     }
 };
 
-export const login=async(body)=>{
+export const loginUser=async(body)=>{
     try {
         const res=await fetch('http://localhost:3001/login' , {
             body: JSON.stringify(body),

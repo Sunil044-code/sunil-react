@@ -1,7 +1,10 @@
-import { useState } from "react";
+import { useContext, useState } from "react";
 import { useNavigate } from "react-router";
-import { login } from "../../services";
+import { loginUser } from "../../services";
+import {AuthContext} from "../../Context/AuthContext";
 export default function Login() {
+
+    const {login}= useContext(AuthContext)
     const navigate=useNavigate()
     const[loginData,setLoginData]=useState({
         email:null,
@@ -14,9 +17,10 @@ export default function Login() {
     const LoginHandler=async(e)=>{
         e.preventDefault()
         try {
-            const res=await login({username:loginData.email,password:loginData.password})
-            navigate('/create_blog')
+            const res=await loginUser({username:loginData.email,password:loginData.password})
             localStorage.setItem("TOKEN",res.token)
+            navigate('/create_blog')
+            login()
             
         } catch (error) {
             setLoginError("Email or Password is invalid!!")
@@ -75,7 +79,7 @@ export default function Login() {
                             onChange={(e)=>setLoginData((prev)=>({...prev,password:e.target.value}))}
                             className="border border-gray-300 rounded-md p-2 focus:outline-none focus:ring-2 focus:ring-blue-400"
                         />
-                    <button type="submit" className="w-fit px-2 py-1 rounded-lg bg-blue-500 text-white">Submit</button>
+                    <button type="submit" className="w-fit px-2 py-1 rounded-lg bg-blue-500 text-white cursor-pointer">Submit</button>
                     </div>
                 </form>
             </div>
