@@ -82,6 +82,9 @@ export default function Login() {
                     <button type="submit" className="w-fit px-2 py-1 rounded-lg bg-blue-500 text-white cursor-pointer">Submit</button>
                     </div>
                 </form>
+                <p className="mt-3 text-sm text-slate-600">
+                  Don't have an account? <button onClick={()=>navigate('/signup')} className="text-blue-600 underline">Sign up</button>
+                </p>
             </div>
         </div>
         </div>

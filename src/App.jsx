@@ -7,13 +7,11 @@ import Footer from './Components/common/Footer'
 
 function App() {
   return (
-    <div className="min-h-screen flex flex-col">
+    <div className="min-h-screen flex flex-col bg-gradient-to-b from-slate-50 via-white to-slate-100">
       <Header />
-      
-      <div className="flex-grow p-4 rounded-4xl border-black">
+      <main className="flex-grow">
         <GenerateRoutes routes={appRoutes} />
-      </div>
-      
+      </main>
       <Footer />
     </div>
   );
